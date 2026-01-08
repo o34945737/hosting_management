@@ -8,7 +8,7 @@
 									<div class="card-toolbar my-1">
 										<div class="d-flex align-items-center position-relative my-1">
                                             <i class="ki-outline ki-magnifier fs-3 position-absolute ms-3"></i>
-                                            <input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-350px ps-9" placeholder="Search Tenant" />
+                                            <input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-350px ps-9" placeholder="Search" />
                                         </div>
 										<!--end::Search-->
 									</div>
