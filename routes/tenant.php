@@ -67,6 +67,7 @@ Route::middleware([
         Route::get('schedules/import/last-preview', [ScheduleController::class, 'lastPreview'])->name('schedules.import.last-preview'); // optional
         Route::resource('schedules', ScheduleController::class);
 
+
         Route::get('attendances/data', [AttendancesController::class, 'data'])->name('attendances.data');
         Route::resource('attendances', AttendancesController::class)->only(['index', 'show']);
 

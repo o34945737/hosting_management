@@ -13,7 +13,7 @@ class AttendancesController extends Controller
      */
     public function index()
     {
-        return view('page-users.managements.roles.index');
+        return view('page-users.monitoring.attendance-hosts.index');
     }
 
     public function data()
