@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::disableForeignKeyConstraints();
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name'); // ADMIN, HOST, TELCO, KA
+            $table->string('slug')->unique(); // admin, host, telco, ka
+            $table->text('description')->nullable();
+            $table->foreignId('user_id')
+                ->nullable()                 // ⬅️ INI KUNCI UTAMA
+                ->constrained('users')
+                ->nullOnDelete();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('roles');
+    }
+};
