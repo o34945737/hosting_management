@@ -62,12 +62,12 @@ Route::middleware([
             ->name('schedules.brands-options');
         Route::get('schedules/studios-options', [ScheduleController::class, 'studiosOptions'])
             ->name('schedules.studios-options');
-
         Route::post('schedules/import/preview', [ScheduleController::class, 'preview'])->name('schedules.import.preview');
         Route::post('schedules/import/commit',  [ScheduleController::class, 'commit'])->name('schedules.import.commit');
         Route::get('schedules/import/last-preview', [ScheduleController::class, 'lastPreview'])->name('schedules.import.last-preview'); // optional
         Route::resource('schedules', ScheduleController::class);
 
+        Route::get('attendances/data', [AttendancesController::class, 'data'])->name('attendances.data');
         Route::resource('attendances', AttendancesController::class)->only(['index', 'show']);
 
         Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
