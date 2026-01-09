@@ -264,7 +264,7 @@ class ScheduleController extends Controller
         return response()->json(['data' => $items]);
     }
 
-    public function BrandOptions()
+    public function brandsOptions()
     {
         $items = Brand::query()
             ->select('id', 'name')

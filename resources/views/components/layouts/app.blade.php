@@ -1440,18 +1440,25 @@
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-                                                <form method="post" action="{{route('central.logout')}}">
-                                                    @csrf
-												    <button type="submit" class="menu-link px-5">Sign Out</a>
-                                                </form>
+                                            @php
+                                                $isCentral = auth('central')->check();
+                                                $isTenant  = auth('web')->check();
+
+                                                $logoutAction = $isCentral
+                                                    ? route('central.logout')
+                                                    : route('tenant.logout');
+                                            @endphp
+
+                                            <form method="POST" action="{{ $logoutAction }}">
+                                                @csrf
+                                                <button type="submit" class="menu-link px-5 btn btn-link p-0 m-0">
+                                                    Sign Out
+                                                </button>
+                                            </form>
 											</div>
 											<!--end::Menu item-->
 										</div>
-										<!--end::User account menu-->
-										<!--end::Menu wrapper-->
 									</div>
-									<!--end::User menu-->
-									<!--begin::Heaeder menu toggle-->
 									<div class="d-flex align-items-center d-lg-none ms-2 me-n2" title="Show header menu">
 										<div class="btn btn-icon btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
 											<i class="ki-outline ki-burger-menu-2 fs-1"></i>

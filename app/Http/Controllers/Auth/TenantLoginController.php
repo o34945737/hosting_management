@@ -21,7 +21,6 @@ class TenantLoginController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-
         $remember = $request->boolean('remember');
 
         if (!Auth::guard('web')->attempt($credentials, $remember)) {

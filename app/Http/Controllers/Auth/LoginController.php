@@ -11,7 +11,11 @@ class LoginController extends Controller
 {
     public function show()
     {
-        return view('components.central-superadmin.auth.index');
+        if (Auth::guard('central')->check()) {
+            return redirect()->route('central.dashboard');
+        }
+
+        return view('components.central-superadmin.auth.index'); // sesuaikan view kamu
     }
 
     public function store(Request $request)

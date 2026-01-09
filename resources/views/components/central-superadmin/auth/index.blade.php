@@ -38,7 +38,7 @@
 						<!--begin::Wrapper-->
 						<div class="w-lg-500px p-10">
 							<!--begin::Form-->
-							<form class="form w-100" method="POST" action="{{ route('central.process-login') }}" novalidate>
+							<form class="form w-100" method="POST" action="{{ route('central.login.store') }}" novalidate>
                                 @csrf
                                 <div class="text-center mb-11">
                                     <h1 class="text-dark fw-bolder mb-3">Sign In</h1>

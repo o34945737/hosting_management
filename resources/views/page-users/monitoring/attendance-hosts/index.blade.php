@@ -46,16 +46,81 @@
 								<!--begin::Card header-->
 								<div class="card-header mt-5">
 									<div class="card-toolbar my-1">
-										<div class="d-flex align-items-center position-relative my-1">
-                                            <i class="ki-outline ki-magnifier fs-3 position-absolute ms-3"></i>
-                                            <input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-350px ps-9" placeholder="Search" />
+                                       <div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">Host <span class="required"></span></label>
+											<select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true" class="w-250px form-select form-select-solid form-select-sm">
+												<option value="All" selected="selected">All Orders</option>
+												<option value="Approved">Approved</option>
+												<option value="Declined">Declined</option>
+												<option value="In Progress">In Progress</option>
+												<option value="In Transit">In Transit</option>
+											</select>
+										</div>
+										<div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">Studio <span class="required"></span></label>
+											<select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true" class="w-250px form-select form-select-solid form-select-sm">
+												<option value="All" selected="selected">All Orders</option>
+												<option value="Approved">Approved</option>
+												<option value="Declined">Declined</option>
+												<option value="In Progress">In Progress</option>
+												<option value="In Transit">In Transit</option>
+											</select>
+										</div>
+                                        <div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">Brand <span class="required"></span></label>
+											<select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true" class="w-250px form-select form-select-solid form-select-sm">
+												<option value="All" selected="selected">All Orders</option>
+												<option value="Approved">Approved</option>
+												<option value="Declined">Declined</option>
+												<option value="In Progress">In Progress</option>
+												<option value="In Transit">In Transit</option>
+											</select>
+										</div>
+                                        <div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">Status Attendance <span class="required"></span></label>
+											<select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true" class="w-250px form-select form-select-solid form-select-sm">
+												<option value="All" selected="selected">All Orders</option>
+												<option value="Approved">Approved</option>
+												<option value="Declined">Declined</option>
+												<option value="In Progress">In Progress</option>
+												<option value="In Transit">In Transit</option>
+											</select>
+										</div>
+                                        <div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">From Date <span class="required"></span></label>
+                                            <input id="filter_date_from"
+                                                name="date_from"
+                                                type="date"
+                                                class="w-250px form-control form-control-solid form-control-sm" />
+										</div>
+                                        <div class="me-4 my-1">
+                                            <label class="fs-6 fw-semibold mb-2">End Date <span class="required"></span></label>
+											<input id="filter_date_to"
+                                                name="date_to"
+                                                type="date"
+                                                class="w-250px form-control form-control-solid form-control-sm" />
+										</div>
+                                        <div class="my-1 d-flex gap-2">
+                                            <div class="d-flex flex-column">
+                                                <!-- spacer label -->
+                                                <label class="fs-6 fw-semibold mb-2 invisible">Actions</label>
+
+                                                <div class="d-flex gap-2">
+                                                    <button type="button" id="btnFilter"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="ki-outline ki-filter fs-6 me-1"></i>
+                                                        Filter
+                                                    </button>
+
+                                                    <button type="button" id="btnResetFilter"
+                                                        class="btn btn-sm btn-light">
+                                                        <i class="ki-outline ki-cross fs-6 me-1"></i>
+                                                        Reset
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-										<!--end::Search-->
 									</div>
-                                    <div class="card-title flex-column">
-										<a href="#" class="btn btn-sm btn-primary me-3" data-bs-toggle="modal" data-bs-target="#studio_modal">Add Data</a>
-									</div>
-									<!--begin::Card toolbar-->
 								</div>
 								<!--end::Card header-->
 								<!--begin::Card body-->
@@ -77,56 +142,6 @@
                                     </div>
                                 </div>
 					    </div>
-
-
-        <div class="modal fade" id="studio_modal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered mw-650px">
-                <div class="modal-content rounded">
-
-                    <div class="modal-header pb-0 border-0 justify-content-end">
-                        <button type="button" class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                            <i class="ki-outline ki-cross fs-1"></i>
-                        </button>
-                    </div>
-
-                    <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
-                        <div class="text-center mb-8">
-                            <h2 class="fw-bold" id="studio_modal_title">Create Role</h2>
-                        </div>
-
-                        <form id="brand_form" method="POST" action="{{ route('tenant.brands.store') }}">
-                            @csrf
-
-                            <div class="d-flex flex-column mb-6 fv-row">
-                                <label class="fs-6 fw-semibold mb-2">Brand <span class="required"></span></label>
-                                <input type="text" class="form-control form-control-solid" placeholder="Brand" name="name" autocomplete="off">
-                                <div class="text-danger small mt-1" data-error="name"></div>
-                            </div>
-
-                            <div class="d-flex flex-column mb-6 fv-row">
-                                <label class="fs-6 fw-semibold mb-2">Description</label>
-                                <textarea class="form-control form-control-solid" rows="3" name="description" placeholder="Optional..."></textarea>
-                                <div class="text-danger small mt-1" data-error="description"></div>
-                            </div>
-
-                            <div class="text-center mt-8">
-                                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
-
-                                <button type="submit" id="brand_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Submit</span>
-                                    <span class="indicator-progress">Please wait...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
 @push('scripts')
     <script>
         $(function () {
